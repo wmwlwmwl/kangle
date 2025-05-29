@@ -338,17 +338,15 @@ bool KHttpManage::extends(unsigned item) {
 #else
 			,NULL
 #endif
-
+		,klang["api"]
 #ifndef HTTP_PROXY
-		,klang["api"],
-		klang["cmd"]
+		,klang["cmd"]
 #else
-		,NULL,NULL
+		,NULL
 #endif
 #ifdef ENABLE_KSAPI_FILTER
 			,"dso"
 #endif
-
 	};
 	if (item == 0) {
 		item = atoi(getUrlValue("item").c_str());

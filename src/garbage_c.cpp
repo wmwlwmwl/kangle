@@ -210,8 +210,8 @@ KTHREAD_FUNCTION time_thread(void* arg) {
 			flushFlowFlag = false;
 		}
 #endif
-#ifndef HTTP_PROXY
 		spProcessManage.refresh(nowTime);
+#ifndef HTTP_PROXY
 		conf.gam->refreshCmd(nowTime);
 #endif
 #ifdef ENABLE_ADPP

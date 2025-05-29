@@ -29,7 +29,11 @@ void KTable::clear() {
 }
 KSafeChain KTable::parse_chain(const khttpd::KXmlNodeBody* xml) {
 	KSafeChain chain(new KChain());
-	chain->parse_config(access, xml);
+	try {
+		chain->parse_config(access, xml);
+	} catch (std::exception e) {
+		klog(KLOG_ERR, "parse chain error [%s]\n", e.what());
+	}
 	return chain;
 }
 void KTable::add_chain_form(KChain* chain, uint8_t accessType, KWStream& s) {

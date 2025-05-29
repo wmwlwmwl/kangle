@@ -741,7 +741,7 @@ void KAccess::setChainAction(kgl_jump_type& jump_type, KSafeJump& jump, const KS
 		}
 		if (!jump) {
 			fprintf(stderr, "cann't get table name=[%s]\n", name.c_str());
-			jump_type = JUMP_DENY;
+			jump_type = JUMP_CONTINUE;
 			throw KXmlException("cann't found table");
 		}
 		break;
@@ -751,7 +751,7 @@ void KAccess::setChainAction(kgl_jump_type& jump_type, KSafeJump& jump, const KS
 		jump.reset(conf.gam->refsAcserver(name));
 		if (!jump) {
 			klog(KLOG_ERR, "cann't get server name=[%s]\n", name.c_str());
-			jump_type = JUMP_DENY;
+			jump_type = JUMP_CONTINUE;
 			throw KXmlException("cann't found server");
 		}
 		break;
@@ -760,7 +760,7 @@ void KAccess::setChainAction(kgl_jump_type& jump_type, KSafeJump& jump, const KS
 		jump.reset(writeBackManager.refsWriteBack(name));
 		if (!jump) {
 			klog(KLOG_ERR, "cann't get writeback name=[%s]\n", name.c_str());
-			jump_type = JUMP_DENY;
+			jump_type = JUMP_CONTINUE;
 			throw KXmlException("cann't found writeback");
 		}
 		break;

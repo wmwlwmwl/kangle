@@ -434,14 +434,12 @@ static void init_config() {
 	conf.sysHost->browse = false;
 	KSubVirtualHost* svh = new KSubVirtualHost(conf.sysHost);
 	svh->set_doc_root(conf.sysHost->doc_root.c_str(), "/");
-#ifdef HTTP_PROXY
 	//add mime type
 	conf.sysHost->addMimeType("gif", "image/gif", kgl_compress_never, 0);
 	conf.sysHost->addMimeType("css", "text/css", kgl_compress_on, 0);
 	conf.sysHost->addMimeType("html", "text/html", kgl_compress_on, 0);
 	conf.sysHost->addMimeType("js", "text/javascript", kgl_compress_on, 0);
 	conf.sysHost->addMimeType("*", "text/plain", kgl_compress_unknow, 0);
-#endif
 	conf.sysHost->hosts.push_back(svh);
 	conf.sysHost->add_ref();
 	init_manager_handler();
